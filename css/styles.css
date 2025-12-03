@@ -1,0 +1,631 @@
+@font-face {
+    font-family: "CMU Serif";
+    src: url("../fonts/CMUSerif-Regular.woff2") format("woff2");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "CMU Serif";
+    src: url("../fonts/CMUSerif-Italic.woff2") format("woff2");
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "CMU Serif";
+    src: url("../fonts/CMUSerif-Bold.woff2") format("woff2");
+    font-weight: 700;
+}
+
+
+:root {
+    --bg-dark: #1a0706;
+    --hero-text: #fdf7f2;
+    --accent: #b75b5b;
+    --accent-soft: #f3dfdf;
+    --card-bg: #ffffff;
+    --text-main: #3d2524;
+    --text-muted: #7b5d5c;
+    --badge-bg: #000000;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "CMU Serif", serif;
+    color: var(--text-main);
+    background-color: #fff;
+}
+
+/* GENEL SECTION STİLLERİ */
+
+.section {
+    width: 100%;
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.4);
+}
+
+.section-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+}
+
+.section-title {
+    font-size: 2.9rem;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    margin: 0 0 1rem;
+}
+
+.section-title.center {
+    text-align: center;
+}
+
+/* HERO */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    background-image: url("../img/background1.png");
+    /* kendi görselini koy */
+    background-size: cover;
+    background-position: center center;
+    color: #ffffff;
+    overflow: hidden;
+    font-family: "CMU Serif", serif;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hero-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    /* biraz yukarıda dursun */
+    text-align: center;
+    z-index: 2;
+    padding: 0 1.5rem;
+}
+
+.hero-logo {
+    position: absolute;
+    top: 3.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 1.15rem;
+    letter-spacing: 0.18em;
+    text-transform: none;
+    z-index: 2;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.hero-logo span {
+    display: block;
+    font-size: 0.85rem;
+    letter-spacing: 0.22em;
+    margin-top: 0.1rem;
+}
+
+.hero-content {
+    max-width: 520px;
+    margin-top: 4rem;
+}
+
+.hero-title {
+    margin: 0 0 1.5rem;
+    font-size: clamp(3.5rem, 5.8vw, 4.8rem);
+    font-weight: 400;
+    line-height: 1.1;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.hero-title span {
+    font-style: italic;
+}
+
+.hero-subtitle {
+    margin: 0 0 2.8rem;
+    font-size: 1.1rem;
+    font-style: italic;
+    letter-spacing: 0.08em;
+}
+
+.hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    background: transparent;
+    color: #ffffff;
+    font-size: 0.9rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.25s ease, color 0.25s ease,
+        transform 0.25s ease, box-shadow 0.25s ease;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.hero-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+    transform: translateY(-1px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+}
+
+.btn-light {
+    background-color: transparent;
+    color: #ffffff;
+}
+
+.btn-light:hover {
+    background-color: #ffffff;
+    color: #000;
+    transform: translateY(-1px);
+}
+
+/* TESTIMONIALS */
+
+.testimonials {
+    background-color: var(--accent-soft);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin-top: 2.5rem;
+}
+
+.testimonial-card {
+    background-color: var(--card-bg);
+    padding: 4rem 3.1rem;
+    text-align: center;
+    border-radius: 0.2rem;
+    border: 1px solid var(--accent);
+    height: 400px;
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.5s ease-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-card.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.testimonial-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--accent);
+    margin: 0 0 2rem;
+    flex: 1;
+
+}
+
+.testimonial-name {
+
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--accent);
+    margin: 0;
+    padding-bottom: 1rem;
+}
+
+/* BRAND STORY BAND */
+
+.brand-story {
+    position: relative;
+    background-image: url("../img/background2.png");
+    /* GÖRSEL */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    color: #fff;
+}
+
+.brand-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.brand-content {
+    position: relative;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+}
+
+.brand-text {
+    font-size: clamp(2.1rem, 4vw, 2.9rem);
+    line-height: 1.25;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* PRODUCTS */
+
+.products {
+    background-color: var(--accent-soft);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+}
+
+.product-card {
+    overflow: hidden;
+    border-radius: 0.1rem;
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.4);
+}
+
+.product-img {
+    position: relative;
+    height: 470px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(25px);
+    transition: transform 0.45s ease, opacity 0.45s ease;
+}
+
+.product-card:hover .product-img {
+    transform: scale(1.03);
+    filter: brightness(1.05);
+}
+
+.product-card.in-view .product-img {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.product-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.product-content {
+    position: relative;
+    padding-bottom: 2.3rem;
+    text-align: center;
+    color: #fff;
+}
+
+/* ================================
+   SMOOTH REVEAL SCROLL EFFECT
+================================ */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(1px);
+    transition: opacity 0.9s ease, transform 0.9s ease, filter 0.9s ease;
+}
+
+.reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+/* Stagger (kartların sırayla gelmesi) */
+.reveal:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.reveal:nth-child(2) {
+    transition-delay: 0.25s;
+}
+
+.reveal:nth-child(3) {
+    transition-delay: 0.4s;
+}
+
+.reveal:nth-child(4) {
+    transition-delay: 0.55s;
+}
+
+.reveal:nth-child(5) {
+    transition-delay: 0.7s;
+}
+
+.product-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+}
+
+.product-name {
+    font-family: "Playfair Display", serif;
+    font-size: 1.4rem;
+    margin: 0 0 0.8rem;
+}
+
+.product-price {
+    display: inline-block;
+    font-size: 0.8rem;
+    padding: 0.25rem 0.8rem;
+    background-color: var(--badge-bg);
+    border-radius: 999px;
+}
+
+/* ÖRNEK GÖRSEL CLASSLARI – kendi url'lerini koy */
+
+.product-img-1 {
+    background-image: url("../img/product/1.png");
+}
+
+.product-img-2 {
+    background-image: url("../img/product/2.png");
+}
+
+.product-img-3 {
+    background-image: url("../img/product/3.png");
+}
+
+.adv-img-1 {
+    background-image: url("../img/product/4.png");
+}
+
+.adv-img-2 {
+    background-image: url("../img/product/5.png");
+}
+
+.adv-img-3 {
+    background-image: url("../img/product/6.png");
+}
+
+/* PHILOSOPHY */
+
+.philosophy {
+    background-color: #fff;
+    padding: 5rem 1.5rem;
+    height: 100%;
+    width: 100%;
+}
+
+.philosophy-top {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    height: 600px;
+}
+
+.philosophy-text {
+    margin: 0;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: var(--accent);
+    text-align: center;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.philosophy-mid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 3rem;
+    margin-top: 3.5rem;
+    align-items: center;
+}
+
+.philosophy-image-block {
+    height: 500px;
+    width: 90%;
+    background-image: url("../img/skincare.png");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.4);
+}
+
+.philosophy-image-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* merkezleme */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* yatay ortalama */
+    justify-content: center;
+
+    color: #ffffff;
+    font-family: "CMU Serif", serif;
+    font-size: clamp(2.5rem, 3.2vw, 3.1rem);
+    line-height: 1.1;
+    text-align: center;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.philosophy-image-text span {
+
+    display: block;
+}
+
+.philosophy-features {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 0.1rem;
+    font-size: 1.3rem;
+    color: var(--accent);
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+}
+
+/* SAVIORS BAND */
+
+.saviors {
+    position: relative;
+    background-image: url("../img/background3.png");
+    /* GÖRSEL */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+.saviors-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.saviors-content {
+    position: relative;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3.5rem 1.5rem;
+    text-align: center;
+}
+
+.saviors-content h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2.3rem, 4vw, 2.9rem);
+    margin: 0 0 1.4rem;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.saviors-content p {
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.7;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 992px) {
+
+    .testimonials-grid,
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .philosophy-top {
+        grid-template-columns: 1fr;
+    }
+
+    .philosophy-mid {
+        grid-template-columns: 1fr;
+    }
+
+    .philosophy-image-block {
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-logo {
+        top: 2.2rem;
+        font-size: 1rem;
+    }
+
+    .hero-center {
+        transform: translate(-50%, -35%);
+    }
+
+    .hero-title {
+        font-size: clamp(2.4rem, 9vw, 3.1rem);
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .hero-btn {
+        padding: 0.8rem 2.6rem;
+        font-size: 0.8rem;
+    }
+
+    .philosophy-image-text {
+        left: 8%;
+        bottom: 12%;
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 720px) {
+    .hero-inner {
+        padding-top: 2.5rem;
+    }
+
+    .hero-content {
+        margin-top: 3rem;
+    }
+
+    .testimonials-grid,
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-inner {
+        padding-inline: 1rem;
+    }
+
+    .brand-text {
+        font-size: 1.8rem;
+    }
+}
